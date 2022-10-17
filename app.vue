@@ -11,7 +11,7 @@
     @mouseleave.prevent="(e) => stopDrag(e)"
   >
   <g :transform="`matrix(${transformMatrix.join(' ')})`">
-    <image ref="navigationMap" x="0" y="0" href="pexels-arnie-chou-1229042.jpg"></image>
+    <image ref="navigationMap" x="0" y="0" href="~/assets/img/pexels-arnie-chou-1229042.jpg"></image>
   </g>
   </svg>
 </template>
@@ -45,18 +45,21 @@ const doDrag = (e) => {
   let newX = transformMatrix.value[4] + dX
   let maxX = width.value - bBox.width; // attach to the right side of the screen
   panX = e.clientX;
-  console.log(`dX: ${dX} | newX: ${newX} | maxX: ${maxX}`)
+  //console.log(`dX: ${dX} | newX: ${newX} | maxX: ${maxX}`)
   if (newX <= 0 && newX >= maxX) transformMatrix.value[4] += dX
   // Vertical bounding
   let dY = e.clientY - panY
   let newY = transformMatrix.value[5] + dY
   let maxY = height.value - bBox.height; // attach to the bottom of the screen
   panY = e.clientY;
-  console.log(`dY: ${dY} | newY: ${newY} | maxY: ${maxY}`)
+  //console.log(`dY: ${dY} | newY: ${newY} | maxY: ${maxY}`)
   if (newY <= 0 && newY >= maxY) transformMatrix.value[5] += dY
-  console.log(`matrix(${transformMatrix.value.join(' ')})`)
+  //console.log(`matrix(${transformMatrix.value.join(' ')})`)
 }
+// Handle zooming with the mousewheel or touch
 
+// TODO: browser zoom level should only impact the text size on components, not the svg viewBox
+// TODO: use the mouse scrollwheel to zoom in & out
 
 // Handle the window size dynamically
 onMounted(() => {
@@ -69,9 +72,6 @@ onUnmounted(() => {
 const windowResizeHandler = (e = "") => {
   height.value = window.innerHeight
   width.value = window.innerWidth
-  console.log(height.value)
-  console.log(width.value)
-  console.log(window)
 }
 
 </script>
