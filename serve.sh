@@ -1,8 +1,8 @@
 #!/bin/sh
-npm install
 git config pull.rebase false
 git reset --hard HEAD && git clean -fd && git pull
 chmod +x ./serve.sh
+npm install
 npm run build
 # Move the files in place
 rm -rf /var/www/vue-manipulate-svg/*
