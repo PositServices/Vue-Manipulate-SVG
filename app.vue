@@ -445,7 +445,7 @@ onMounted(async () => {
   svg.g = new SVG_group({ parent: svg.svg });
   svg.mapImage = new SVG_element_image({
     parent: svg.g,
-    href: "assets/img/map.jpg",
+    href: "/assets/img/map.jpg",
     width: computed(() => svg.anchor.width.value),
     height: computed(() => svg.anchor.height.value),
     normalizePixelRatio: true,
